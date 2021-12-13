@@ -1,6 +1,8 @@
 # NomadTeams
 Para el despliegue de la aplicación, dejamos este documento para aclarar los pasos previos.
 
+Instalar Xampp desde el siguiente enlace: https://www.apachefriends.org/es/index.html. Una vez lo iniciemos, tendremos que hacer click en Start tanto a Apache como a MySQL para poder iniciar más tarde phpMyAdmin.
+
 Para el front, deberíamos instalar NodeJs. Tras descargar nuestro repositorio, deberiámos hacer npm install para instalar los paquetes.
 Seguidamente, con ng serve -o se nos compilaría y abriría nuestro frontal en el navegador. 
 
