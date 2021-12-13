@@ -30,7 +30,7 @@ export class FeedComponent implements OnInit {
   }
 
   public list_followers(){
-    this._followService.post_followers(2).subscribe(
+    this._followService.post_followers(JSON.parse(localStorage.getItem('usuario')!).id).subscribe(
       data =>{
         console.log(data);
         this.post_follow = data;
