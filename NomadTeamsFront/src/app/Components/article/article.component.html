@@ -1,0 +1,105 @@
+<div
+  class="tab-pane fade show active"
+  id="nav-home"
+  role="tabpanel"
+  aria-labelledby="nav-home-tab"
+>
+  <div class="card text-center mb-4">
+    <div class="card text-white bg-primary">
+      <h1 clacss="card-title">{{ article.tittle }}</h1>
+    </div>
+    <div class="text-center text-white pt-2" style="background-color: #599afd">
+      <p><b>Descripción:</b> {{ article.description }}</p>
+    </div>
+
+    <div>
+      <p class="mt-2 text-left">{{ article.content }}</p>
+      <div class="card-footer text-muted">
+        <a routerLink="/user/{{ article.user_id }}">
+          <i>{{ article.nombre }} {{ article.apellidos }}</i></a
+        >
+        | {{ article.created_at | date: "dd-MMM-yyyy" }}
+      </div>
+    </div>
+  </div>
+
+  <!--Listado de comentarios-->
+
+  <div>
+    <div class="container mt-5">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-8">
+          <div
+            class="
+              headings
+              d-flex
+              justify-content-between
+              align-items-center
+              mb-3
+            "
+          >
+            <h5 class="">Respuestas:</h5>
+          </div>
+
+          <div class="card p-3" *ngFor="let a of comments">
+            <!-- ngFor snippets -->
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="user d-flex flex-row align-items-center">
+                <span>
+                  <small class="font-weight-bold text-primary">
+                    <a routerLink="/user/{{ a.user_id }}"
+                      >{{ a.nombre }} {{ a.apellidos }}</a
+                    >
+                  </small>
+                </span>
+              </div>
+              <small>{{ a.created_at | date: "dd-MMM-yyyy" }}</small>
+            </div>
+            <div
+              class="
+                action
+                d-flex
+                justify-content-between
+                mt-2
+                align-items-center
+              "
+            >
+              <small class="font-weight-bold">{{ a.content }}</small>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center align-items-center mt-4">
+    <a (click)="clickReply()" class="btn btn-primary mb-3">Responder</a>
+  </div>
+  <!-- Crear un comentario-->
+  <div *ngIf="reply">
+    <div class="row">
+      <div class="col-4"></div>
+      <form
+        #createCommentForm="ngForm"
+        (ngSubmit)="createComment(createCommentForm.value)"
+        class="form-group text-center col-4"
+      >
+        <label for="exampleFormControlTextarea1" class="mb-2"
+          ><b>Introduce aquí tu respuesta</b></label
+        >
+        <textarea
+          class="form-control"
+          ngModel
+          #content="ngModel"
+          name="content"
+          required
+          rows="3"
+          placeholder="¿Quieres participar o estás interesado? Hazle llegar tus ideas."
+        ></textarea>
+        <button type="submit" class="btn btn-primary mt-3 mb-3">
+          Enviar respuesta
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

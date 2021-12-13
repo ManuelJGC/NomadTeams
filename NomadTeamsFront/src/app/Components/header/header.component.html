@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" *ngIf="!iniciado" routerLink="/">Nomad Teams</a>
+    <a *ngIf="iniciado" class="navbar-brand" routerLink="/feed" >Nomad Teams</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" *ngIf="!iniciado" >Inicio</a>
+        </li>
+
+        <!-- solo si ha iniciado sesion -->
+        <li class="nav-item" *ngIf="iniciado">
+          <a class="nav-link btn" routerLink="/newarticle" routerLinkActive="active"> <i class="fa fa-plus"></i> Nuevo proyecto</a>
+        </li>
+        <li class="nav-item" *ngIf="iniciado">
+          <a class="nav-link" routerLink="/feed" routerLinkActive="active">Feed</a>
+        </li>
+
+        <!-- si no ha iniciado sesion -->
+        <li class="nav-item" *ngIf="!iniciado">
+          <a class="nav-link" routerLink="/register" routerLinkActive="active">Regístrate</a>
+        </li>
+        <li class="nav-item" *ngIf="!iniciado">
+          <a class="nav-link" routerLink="/login" routerLinkActive="active">Inicia Sesión</a>
+        </li>
+
+        <!-- solo si ha iniciado sesion -->
+        <li class="nav-item dropdown" *ngIf="iniciado">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{user.nombre}}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" routerLink="/profile">Perfil</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#" (click)="cerrarSesion()" >Cerrar sesión</a></li>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>

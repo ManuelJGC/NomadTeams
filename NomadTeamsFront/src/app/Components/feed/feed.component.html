@@ -1,0 +1,48 @@
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Ultimos Proyectos</button>
+    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Seguidos</button>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+    <div *ngFor="let a of post" class="card text-center mb-4">
+      <div class="card-header">
+        <a routerLink="/user/{{ a.user_id }}" > {{ a.nombre }} {{a.apellidos}} </a>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{a.tittle}}</h5>
+        <p class="card-text">{{a.description}}</p>
+        <a routerLink="/article/{{a.id}}" class="btn btn-primary">Leer más</a>
+      </div>
+      <div class="card-footer text-muted">
+       {{a.created_at|date:'dd-MMMM-yyyy'}}
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+      <div *ngFor="let p of post_follow">
+      <div *ngFor="let po of p" class="card text-center mb-4">
+       <div class="card text-center mb-4">
+        <div class="card-header">
+          <a routerLink="/user/{{ po.user_id }}" > {{ po.nombre }} {{ po.apellidos }} </a>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{po.tittle}}</h5>
+          <p class="card-text">{{po.description}}</p>
+          <a class="btn btn-primary" routerLink="/article/{{po.id}}">Leer más</a>
+        </div>
+        <div class="card-footer text-muted">
+          {{po.created_at|date:'dd-MMMM-yyyy'}}
+        </div>
+      </div>
+
+      </div>
+    </div>
+
+
+    </div>
+  </div>
