@@ -8,5 +8,3 @@ En phpMyAdmin, copiamos el contenido de database.sql (dentro del repositorio del
 
 Para el back, sería conveniente instalar Composer. Tras descargar nuestro repositorio, con php artisan serve estaría iniciado nuestro back. 
 
-
-Os dejamos el enlace al repositorio en Github por si hubiese algún problema: https://github.com/ManuelJGC/NomadTeams.git
